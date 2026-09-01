@@ -15,8 +15,10 @@ def linear_search(data: List[int], target: int) -> int:
 
     Time complexity: TODO -- state best/average/worst case here.
     """
-    # TODO
-    raise NotImplementedError
+    for i, value in enumerate(data):
+        if value == target:
+            return i
+    return -1
 
 
 def binary_search(data: List[int], target: int) -> int:
@@ -26,8 +28,17 @@ def binary_search(data: List[int], target: int) -> int:
 
     Time complexity: TODO -- state best/average/worst case here.
     """
-    # TODO
-    raise NotImplementedError
+    low = 0
+    high = len(data) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if data[mid] == target:
+            return mid
+        elif data[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
 
 
 def bubble_sort(data: List[int]) -> List[int]:
@@ -37,5 +48,10 @@ def bubble_sort(data: List[int]) -> List[int]:
 
     Time complexity: TODO -- state best/average/worst case here.
     """
-    # TODO
-    raise NotImplementedError
+    sorted_data = data[:]
+    n = len(sorted_data)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if sorted_data[j] > sorted_data[j+1]:
+                sorted_data[j], sorted_data[j+1] = sorted_data[j+1], sorted_data[j]
+    return sorted_data
